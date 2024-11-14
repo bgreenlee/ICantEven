@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>I Can't Even</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>I Can't Even</h1>
+            <div class="toggle-container">
+                <label class="switch">
+                    <input type="checkbox" id="enableFilter">
+                    <span class="slider"></span>
+                </label>
+                <span class="toggle-label">Enable for this site</span>
+            </div>
+        </div>
+
+        <div class="keywords-section">
+            <h2>Filtered Keywords</h2>
+            <div class="keywords-container">
+                <div id="keywordsList"></div>
+                <div class="add-keyword">
+                    <input type="text" id="newKeyword" placeholder="Add new keyword">
+                    <button id="addKeyword">Add</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span id="status"></span>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>

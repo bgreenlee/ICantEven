@@ -1,0 +1,10 @@
+{
+    "extension_name": {
+        "message": "I Can't Even",
+        "description": "Web content filter"
+    },
+    "extension_description": {
+        "message": "I Can't Even allows you to filter out web content containing certain keywords, for when you just can't even.",
+        "description": "Web content filter"
+    }
+}

@@ -1,0 +1,745 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A2CE84442CE4212B0034BFDE /* ICantEven Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A2CE84432CE4212B0034BFDE /* ICantEven Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A2CE842E2CE4212B0034BFDE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A2CE84092CE4212A0034BFDE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A2CE84102CE4212A0034BFDE;
+			remoteInfo = ICantEven;
+		};
+		A2CE84382CE4212B0034BFDE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A2CE84092CE4212A0034BFDE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A2CE84102CE4212A0034BFDE;
+			remoteInfo = ICantEven;
+		};
+		A2CE84452CE4212B0034BFDE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A2CE84092CE4212A0034BFDE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A2CE84422CE4212B0034BFDE;
+			remoteInfo = "ICantEven Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A2CE84632CE4212B0034BFDE /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A2CE84442CE4212B0034BFDE /* ICantEven Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A2CE84112CE4212A0034BFDE /* ICantEven.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ICantEven.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2CE842D2CE4212B0034BFDE /* ICantEvenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ICantEvenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2CE84372CE4212B0034BFDE /* ICantEvenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ICantEvenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2CE84432CE4212B0034BFDE /* ICantEven Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "ICantEven Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A2CE845D2CE4212B0034BFDE /* Exceptions for "ICantEven Extension" folder in "ICantEven Extension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A2CE84422CE4212B0034BFDE /* ICantEven Extension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		A2CE84132CE4212A0034BFDE /* ICantEven */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ICantEven;
+			sourceTree = "<group>";
+		};
+		A2CE84302CE4212B0034BFDE /* ICantEvenTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ICantEvenTests;
+			sourceTree = "<group>";
+		};
+		A2CE843A2CE4212B0034BFDE /* ICantEvenUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ICantEvenUITests;
+			sourceTree = "<group>";
+		};
+		A2CE84472CE4212B0034BFDE /* ICantEven Extension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A2CE845D2CE4212B0034BFDE /* Exceptions for "ICantEven Extension" folder in "ICantEven Extension" target */,
+			);
+			explicitFolders = (
+				Resources/_locales,
+				Resources/images,
+			);
+			path = "ICantEven Extension";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A2CE840E2CE4212A0034BFDE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2CE842A2CE4212B0034BFDE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2CE84342CE4212B0034BFDE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2CE84402CE4212B0034BFDE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A2CE84082CE4212A0034BFDE = {
+			isa = PBXGroup;
+			children = (
+				A2CE84132CE4212A0034BFDE /* ICantEven */,
+				A2CE84302CE4212B0034BFDE /* ICantEvenTests */,
+				A2CE843A2CE4212B0034BFDE /* ICantEvenUITests */,
+				A2CE84472CE4212B0034BFDE /* ICantEven Extension */,
+				A2CE84122CE4212A0034BFDE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A2CE84122CE4212A0034BFDE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A2CE84112CE4212A0034BFDE /* ICantEven.app */,
+				A2CE842D2CE4212B0034BFDE /* ICantEvenTests.xctest */,
+				A2CE84372CE4212B0034BFDE /* ICantEvenUITests.xctest */,
+				A2CE84432CE4212B0034BFDE /* ICantEven Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A2CE84102CE4212A0034BFDE /* ICantEven */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2CE84642CE4212B0034BFDE /* Build configuration list for PBXNativeTarget "ICantEven" */;
+			buildPhases = (
+				A2CE840D2CE4212A0034BFDE /* Sources */,
+				A2CE840E2CE4212A0034BFDE /* Frameworks */,
+				A2CE840F2CE4212A0034BFDE /* Resources */,
+				A2CE84632CE4212B0034BFDE /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A2CE84462CE4212B0034BFDE /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A2CE84132CE4212A0034BFDE /* ICantEven */,
+			);
+			name = ICantEven;
+			packageProductDependencies = (
+			);
+			productName = ICantEven;
+			productReference = A2CE84112CE4212A0034BFDE /* ICantEven.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A2CE842C2CE4212B0034BFDE /* ICantEvenTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2CE84672CE4212B0034BFDE /* Build configuration list for PBXNativeTarget "ICantEvenTests" */;
+			buildPhases = (
+				A2CE84292CE4212B0034BFDE /* Sources */,
+				A2CE842A2CE4212B0034BFDE /* Frameworks */,
+				A2CE842B2CE4212B0034BFDE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A2CE842F2CE4212B0034BFDE /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A2CE84302CE4212B0034BFDE /* ICantEvenTests */,
+			);
+			name = ICantEvenTests;
+			packageProductDependencies = (
+			);
+			productName = ICantEvenTests;
+			productReference = A2CE842D2CE4212B0034BFDE /* ICantEvenTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A2CE84362CE4212B0034BFDE /* ICantEvenUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2CE846A2CE4212B0034BFDE /* Build configuration list for PBXNativeTarget "ICantEvenUITests" */;
+			buildPhases = (
+				A2CE84332CE4212B0034BFDE /* Sources */,
+				A2CE84342CE4212B0034BFDE /* Frameworks */,
+				A2CE84352CE4212B0034BFDE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A2CE84392CE4212B0034BFDE /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A2CE843A2CE4212B0034BFDE /* ICantEvenUITests */,
+			);
+			name = ICantEvenUITests;
+			packageProductDependencies = (
+			);
+			productName = ICantEvenUITests;
+			productReference = A2CE84372CE4212B0034BFDE /* ICantEvenUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		A2CE84422CE4212B0034BFDE /* ICantEven Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2CE845E2CE4212B0034BFDE /* Build configuration list for PBXNativeTarget "ICantEven Extension" */;
+			buildPhases = (
+				A2CE843F2CE4212B0034BFDE /* Sources */,
+				A2CE84402CE4212B0034BFDE /* Frameworks */,
+				A2CE84412CE4212B0034BFDE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A2CE84472CE4212B0034BFDE /* ICantEven Extension */,
+			);
+			name = "ICantEven Extension";
+			packageProductDependencies = (
+			);
+			productName = "ICantEven Extension";
+			productReference = A2CE84432CE4212B0034BFDE /* ICantEven Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A2CE84092CE4212A0034BFDE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					A2CE84102CE4212A0034BFDE = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					A2CE842C2CE4212B0034BFDE = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = A2CE84102CE4212A0034BFDE;
+					};
+					A2CE84362CE4212B0034BFDE = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = A2CE84102CE4212A0034BFDE;
+					};
+					A2CE84422CE4212B0034BFDE = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = A2CE840C2CE4212A0034BFDE /* Build configuration list for PBXProject "ICantEven" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A2CE84082CE4212A0034BFDE;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A2CE84122CE4212A0034BFDE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A2CE84102CE4212A0034BFDE /* ICantEven */,
+				A2CE842C2CE4212B0034BFDE /* ICantEvenTests */,
+				A2CE84362CE4212B0034BFDE /* ICantEvenUITests */,
+				A2CE84422CE4212B0034BFDE /* ICantEven Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A2CE840F2CE4212A0034BFDE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2CE842B2CE4212B0034BFDE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2CE84352CE4212B0034BFDE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2CE84412CE4212B0034BFDE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A2CE840D2CE4212A0034BFDE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2CE84292CE4212B0034BFDE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2CE84332CE4212B0034BFDE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2CE843F2CE4212B0034BFDE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A2CE842F2CE4212B0034BFDE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A2CE84102CE4212A0034BFDE /* ICantEven */;
+			targetProxy = A2CE842E2CE4212B0034BFDE /* PBXContainerItemProxy */;
+		};
+		A2CE84392CE4212B0034BFDE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A2CE84102CE4212A0034BFDE /* ICantEven */;
+			targetProxy = A2CE84382CE4212B0034BFDE /* PBXContainerItemProxy */;
+		};
+		A2CE84462CE4212B0034BFDE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A2CE84422CE4212B0034BFDE /* ICantEven Extension */;
+			targetProxy = A2CE84452CE4212B0034BFDE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A2CE845F2CE4212B0034BFDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "ICantEven Extension/ICantEven_Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UBXXTX5R7W;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ICantEven Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "ICantEven Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.footle.ICantEven.Extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A2CE84602CE4212B0034BFDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "ICantEven Extension/ICantEven_Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UBXXTX5R7W;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ICantEven Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "ICantEven Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.footle.ICantEven.Extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		A2CE84612CE4212B0034BFDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A2CE84622CE4212B0034BFDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		A2CE84652CE4212B0034BFDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ICantEven/ICantEven.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UBXXTX5R7W;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ICantEven;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.footle.ICantEven;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A2CE84662CE4212B0034BFDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ICantEven/ICantEven.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UBXXTX5R7W;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ICantEven;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.footle.ICantEven;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		A2CE84682CE4212B0034BFDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UBXXTX5R7W;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.footle.ICantEvenTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ICantEven.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ICantEven";
+			};
+			name = Debug;
+		};
+		A2CE84692CE4212B0034BFDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UBXXTX5R7W;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.footle.ICantEvenTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ICantEven.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ICantEven";
+			};
+			name = Release;
+		};
+		A2CE846B2CE4212B0034BFDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UBXXTX5R7W;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.footle.ICantEvenUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = ICantEven;
+			};
+			name = Debug;
+		};
+		A2CE846C2CE4212B0034BFDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UBXXTX5R7W;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.footle.ICantEvenUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = ICantEven;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A2CE840C2CE4212A0034BFDE /* Build configuration list for PBXProject "ICantEven" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2CE84612CE4212B0034BFDE /* Debug */,
+				A2CE84622CE4212B0034BFDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A2CE845E2CE4212B0034BFDE /* Build configuration list for PBXNativeTarget "ICantEven Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2CE845F2CE4212B0034BFDE /* Debug */,
+				A2CE84602CE4212B0034BFDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A2CE84642CE4212B0034BFDE /* Build configuration list for PBXNativeTarget "ICantEven" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2CE84652CE4212B0034BFDE /* Debug */,
+				A2CE84662CE4212B0034BFDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A2CE84672CE4212B0034BFDE /* Build configuration list for PBXNativeTarget "ICantEvenTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2CE84682CE4212B0034BFDE /* Debug */,
+				A2CE84692CE4212B0034BFDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A2CE846A2CE4212B0034BFDE /* Build configuration list for PBXNativeTarget "ICantEvenUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2CE846B2CE4212B0034BFDE /* Debug */,
+				A2CE846C2CE4212B0034BFDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A2CE84092CE4212A0034BFDE /* Project object */;
+}
