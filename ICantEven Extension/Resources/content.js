@@ -1,80 +1,100 @@
-// Store filter keywords in a Set for efficient lookup
-let filterKeywords = new Set();
+// Store filter style preference
+var currentFilterStyle = 'hide';
 
-// Function to check if a URL contains any filtered keywords
-function urlContainsFilteredWord(url) {
-    const decodedUrl = decodeURIComponent(url.toLowerCase());
-    for (let keyword of filterKeywords) {
-        if (decodedUrl.includes(keyword.toLowerCase())) {
-//            console.log("Found '" + keyword + "' in url: " + decodedUrl);
-            return true;
-        }
+// Function to setup redaction styles
+function setupRedactionStyles() {
+    if (!document.getElementById('redaction-style')) {
+        const style = document.createElement('style');
+        style.id = 'redaction-style';
+        style.textContent = `
+            .redacted {
+                background-color: #000 !important;
+                color: transparent !important;
+                border-radius: 2px;
+                user-select: none;
+                text-decoration: none !important;
+                text-shadow: none !important;
+            }
+            .redacted img {
+                filter: brightness(0%) opacity(0.8);
+            }
+            .redacted * {
+                background-color: #000 !important;
+                color: transparent !important;
+            }
+        `;
+        document.head.appendChild(style);
     }
-    return false;
 }
 
-// Function to check if text contains any of the filter keywords
-function containsFilteredWord(text) {
-    const lowerText = text.toLowerCase();
-    for (let keyword of filterKeywords) {
-        if (lowerText.includes(keyword.toLowerCase())) {
-            return true;
-        }
+// Function to apply the filter based on current style
+function applyFilter(element, shouldRestore = false) {
+    if (shouldRestore) {
+        // Always remove both hiding and redaction when restoring
+        element.style.visibility = element.getAttribute('data-original-visibility') || 'visible';
+        element.removeAttribute('data-original-visibility');
+        element.classList.remove('redacted');
+        return;
     }
-    return false;
+
+    if (currentFilterStyle === 'hide') {
+        element.setAttribute('data-original-visibility', element.style.visibility);
+        element.style.visibility = 'hidden';
+        element.classList.remove('redacted'); // Remove redaction if it was previously redacted
+    } else {
+        // Remove any hiding if it was previously hidden
+        element.style.visibility = element.getAttribute('data-original-visibility') || 'visible';
+        element.removeAttribute('data-original-visibility');
+        element.classList.add('redacted');
+    }
 }
 
-// Function to hide elements that match URL criteria
-function hideElementsWithMatchingUrls(rootNode = document.body) {
+// Function to find and hide elements that contain the filtered text
+function hideElementsWithText(searchText, rootNode = document.body) {
+    if (currentFilterStyle === 'redact') {
+        setupRedactionStyles();
+    }
+
     let hiddenCount = 0;
+    searchText = searchText.toLowerCase();
 
-    // Find and process all links
+    // Process links containing the searchText
     const links = rootNode.getElementsByTagName('a');
     for (let link of links) {
-        if (link.href && urlContainsFilteredWord(link.href)) {
-            if (link.style.visibility !== 'hidden') {
-                link.setAttribute('data-original-visibility', link.style.visibility);
-                link.style.visibility = 'hidden';
+        if (link.href && link.href.toLowerCase().includes(searchText)) {
+            if ((currentFilterStyle === 'hide' && link.style.visibility !== 'hidden') ||
+                (currentFilterStyle === 'redact' && !link.classList.contains('redacted'))) {
+                applyFilter(link);
                 hiddenCount++;
             }
         }
     }
 
-    // Find and process all images
+    // Process images containing the searchText
     const images = rootNode.getElementsByTagName('img');
     for (let img of images) {
-        if ((img.src && urlContainsFilteredWord(img.src)) ||
-            (img.alt && containsFilteredWord(img.alt))) {
-            if (img.style.visibility !== 'hidden') {
-                img.setAttribute('data-original-visibility', img.style.visibility);
-                img.style.visibility = 'hidden';
+        if ((img.src && img.src.toLowerCase().includes(searchText)) ||
+            (img.alt && img.alt.toLowerCase().includes(searchText))) {
+            if ((currentFilterStyle === 'hide' && img.style.visibility !== 'hidden') ||
+                (currentFilterStyle === 'redact' && !img.classList.contains('redacted'))) {
+                applyFilter(img);
                 hiddenCount++;
             }
         }
     }
 
-    return hiddenCount;
-}
-
-// Function to find and hide elements that directly contain any filtered text
-function hideElementsWithText(rootNode = document.body) {
-    let hiddenCount = 0;
-
-    // First check for URLs in the subtree
-    hiddenCount += hideElementsWithMatchingUrls(rootNode);
-
-    // Walk through all text nodes in the document or subtree
+    // Walk through all text nodes
     const walker = document.createTreeWalker(
         rootNode,
         NodeFilter.SHOW_TEXT,
         {
             acceptNode: function(node) {
-                // Skip if parent is script, style, or already hidden
                 const parent = node.parentElement;
                 if (!parent ||
                     parent.tagName === 'SCRIPT' ||
                     parent.tagName === 'STYLE' ||
-                    parent.style.visibility === 'hidden') {
+                    (currentFilterStyle === 'hide' && parent.style.visibility === 'hidden') ||
+                    (currentFilterStyle === 'redact' && parent.classList.contains('redacted'))) {
                     return NodeFilter.FILTER_REJECT;
                 }
                 return NodeFilter.FILTER_ACCEPT;
@@ -83,13 +103,11 @@ function hideElementsWithText(rootNode = document.body) {
         false
     );
 
-    const nodesToHide = new Set();
+    const nodesToFilter = new Set();
     let node;
 
     while (node = walker.nextNode()) {
-        // Check if this text node contains any filtered text
-        if (containsFilteredWord(node.textContent)) {
-            // Find the nearest block-level or positioned parent
+        if (node.textContent.toLowerCase().includes(searchText)) {
             let targetElement = node.parentElement;
             while (targetElement &&
                    window.getComputedStyle(targetElement).display === 'inline' &&
@@ -97,16 +115,14 @@ function hideElementsWithText(rootNode = document.body) {
                 targetElement = targetElement.parentElement;
             }
 
-            if (targetElement && targetElement.style.visibility !== 'hidden') {
-                nodesToHide.add(targetElement);
+            if (targetElement) {
+                nodesToFilter.add(targetElement);
             }
         }
     }
 
-    // Hide the identified elements
-    nodesToHide.forEach(element => {
-        element.setAttribute('data-original-visibility', element.style.visibility);
-        element.style.visibility = 'hidden';
+    nodesToFilter.forEach(element => {
+        applyFilter(element);
         hiddenCount++;
     });
 
@@ -115,36 +131,82 @@ function hideElementsWithText(rootNode = document.body) {
 
 // Function to restore hidden elements
 function restoreHiddenElements() {
-    const elements = document.querySelectorAll('[data-original-visibility]');
-    elements.forEach(element => {
-        element.style.visibility = element.getAttribute('data-original-visibility') || 'visible';
-        element.removeAttribute('data-original-visibility');
+    const hiddenElements = document.querySelectorAll('[data-original-visibility]');
+    const redactedElements = document.querySelectorAll('.redacted');
+
+    hiddenElements.forEach(element => {
+        applyFilter(element, true);
     });
-    return elements.length;
+
+    redactedElements.forEach(element => {
+        applyFilter(element, true);
+    });
+
+    return hiddenElements.length + redactedElements.length;
+}
+
+// Function to update keywords
+function updateFilterKeywords(keywords) {
+    restoreHiddenElements();
+    keywords.forEach(keyword => {
+        hideElementsWithText(keyword);
+    });
+}
+
+// Function to handle style updates
+function updateFilterStyle(newStyle) {
+    // Setup redaction styles if switching to redact
+    if (newStyle === 'redact') {
+        setupRedactionStyles();
+    }
+
+    // Store the new style
+    currentFilterStyle = newStyle;
+
+    // Reapply all filters with new style
+    browser.storage.local.get('keywords').then(({ keywords = [] }) => {
+        // First restore all elements
+        restoreHiddenElements();
+        // Then reapply with new style
+        if (keywords.length > 0) {
+            updateFilterKeywords(keywords);
+        }
+    }).catch(error => {
+        console.error('Error updating filter style:', error);
+    });
 }
 
 // Initialize MutationObserver to watch for DOM changes
-function initializeObserver() {
+function initializeObserver(keywords) {
     const observer = new MutationObserver((mutations) => {
         mutations.forEach(mutation => {
             // Handle added nodes
             mutation.addedNodes.forEach(node => {
-                // Only process element nodes
                 if (node.nodeType === Node.ELEMENT_NODE) {
-                    hideElementsWithText(node);
+                    keywords.forEach(keyword => {
+                        hideElementsWithText(keyword, node);
+                    });
                 }
             });
 
-            // Handle attribute changes (for URLs)
+            // Handle attribute changes
             if (mutation.type === 'attributes' &&
                 (mutation.attributeName === 'href' || mutation.attributeName === 'src')) {
-                hideElementsWithMatchingUrls(mutation.target);
+                keywords.forEach(keyword => {
+                    hideElementsWithText(keyword, mutation.target);
+                });
             }
 
-            // Handle character data changes
-            if (mutation.type === 'characterData' &&
-                mutation.target.parentElement?.style.visibility !== 'hidden') {
-                hideElementsWithText(mutation.target.parentElement);
+            // Handle text changes
+            if (mutation.type === 'characterData') {
+                const parent = mutation.target.parentElement;
+                if (parent &&
+                    ((currentFilterStyle === 'hide' && parent.style.visibility !== 'hidden') ||
+                     (currentFilterStyle === 'redact' && !parent.classList.contains('redacted')))) {
+                    keywords.forEach(keyword => {
+                        hideElementsWithText(keyword, parent);
+                    });
+                }
             }
         });
     });
@@ -154,38 +216,11 @@ function initializeObserver() {
         subtree: true,
         characterData: true,
         attributes: true,
-        attributeFilter: ['href', 'src', 'alt'] // Only watch relevant attributes
+        attributeFilter: ['href', 'src', 'alt']
     });
 
     return observer;
 }
-
-// Function to update the filter keywords
-function updateFilterKeywords(keywords) {
-    // Clear existing keywords
-    filterKeywords.clear();
-
-    // Add new keywords
-    keywords.forEach(keyword => {
-        if (keyword && typeof keyword === 'string') {
-            filterKeywords.add(keyword);
-        }
-    });
-
-    // Rehide elements with new keywords
-    restoreHiddenElements();
-    if (filterKeywords.size > 0) {
-        hideElementsWithText();
-    }
-}
-
-// Initialize with keywords and start observer
-const observer = initializeObserver();
-window._contentFilter = {
-    observer: observer,
-    updateKeywords: updateFilterKeywords,
-    restore: restoreHiddenElements
-};
 
 // Listen for messages from popup
 browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
@@ -193,25 +228,56 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
         case 'updateKeywords':
             updateFilterKeywords(message.keywords);
             break;
+        case 'updateFilterStyle':
+            updateFilterStyle(message.style);
+            break;
         case 'enable':
-            // Re-enable filtering with current keywords
             browser.storage.local.get('keywords').then(({ keywords = [] }) => {
                 updateFilterKeywords(keywords);
             });
             break;
         case 'disable':
-            // Disable filtering and restore elements
-            window._contentFilter.restore();
-            window._contentFilter.observer.disconnect();
+            restoreHiddenElements();
+            if (window._contentFilter && window._contentFilter.observer) {
+                window._contentFilter.observer.disconnect();
+            }
             break;
+
+        default:
+            console.error('Unknown message action', message.action);
+    }
+});
+
+// update page when tab becomes active
+document.addEventListener("visibilitychange", function() {
+    if (document.visibilityState == 'visible') {
+        browser.storage.local.get(['disabledSites', 'filterStyle']).then(({
+            disabledSites = [],
+            filterStyle = 'hide'
+        }) => {
+            const hostname = window.location.hostname;
+            if (!disabledSites.includes(hostname)) {
+                updateFilterStyle(filterStyle);
+            }
+        });
     }
 });
 
 // Initialize on page load
-browser.storage.local.get(['keywords', 'disabledSites']).then(({ keywords = [], disabledSites = [] }) => {
-    // Check if the site is disabled
+browser.storage.local.get(['keywords', 'disabledSites', 'filterStyle']).then(({
+    keywords = [],
+    disabledSites = [],
+    filterStyle = 'hide'
+}) => {
     const hostname = window.location.hostname;
     if (!disabledSites.includes(hostname)) {
-        updateFilterKeywords(keywords);
+        updateFilterStyle(filterStyle);
+        const observer = initializeObserver(keywords);
+        window._contentFilter = {
+            observer: observer,
+            restore: restoreHiddenElements
+        };
     }
+}).catch(error => {
+    console.error('Error initializing content script', error);
 });

@@ -7,15 +7,6 @@ const status = document.getElementById('status');
 
 let currentTab = null;
 
-// Helper function to show status message
-function showStatus(message, isError = false) {
-    status.textContent = message;
-    status.style.color = isError ? '#ff4444' : '#4CAF50';
-    setTimeout(() => {
-        status.textContent = '';
-    }, 2000);
-}
-
 // Function to render keywords list
 function renderKeywords(keywords) {
     keywordsList.innerHTML = '';
@@ -40,18 +31,22 @@ function renderKeywords(keywords) {
 
 // Function to update keywords
 async function updateKeywords(keywords) {
-    // Save to storage
-    await browser.storage.local.set({ keywords });
+    try {
+        // Save to storage
+        await browser.storage.local.set({ keywords });
 
-    // Update on current tab if filter is enabled
-    if (currentTab && enableFilter.checked) {
-        await browser.tabs.sendMessage(currentTab.id, {
-            action: 'updateKeywords',
-            keywords: keywords
-        });
+        // Update on current tab if filter is enabled
+        if (currentTab && enableFilter.checked) {
+            await browser.tabs.sendMessage(currentTab.id, {
+                action: 'updateKeywords',
+                keywords: keywords
+            });
+        }
+
+        renderKeywords(keywords);
+    } catch (error) {
+        console.error('Error updating keywords', error);
     }
-
-    renderKeywords(keywords);
 }
 
 // Function to add new keyword
@@ -60,26 +55,32 @@ async function addKeyword(keyword) {
     if (!keyword) return;
 
     try {
-        // Get current keywords
+        const tabs = await browser.tabs.query({ active: true, currentWindow: true });
         const result = await browser.storage.local.get('keywords');
         const keywords = result.keywords || [];
 
-        // Check if keyword already exists
         if (keywords.includes(keyword)) {
-            showStatus('Keyword already exists', true);
             return;
         }
 
-        // Add new keyword
         const newKeywords = [...keywords, keyword];
-        await updateKeywords(newKeywords);
 
-        // Clear input
+        // Save to storage
+        await browser.storage.local.set({ keywords: newKeywords });
+
+        // Update content script if filter is enabled
+        if (currentTab.id && enableFilter.checked) {
+            await browser.tabs.sendMessage(currentTab.id, {
+                action: 'updateKeywords',
+                keywords: newKeywords
+            });
+        }
+
+        // Update UI
+        renderKeywords(newKeywords);
         newKeyword.value = '';
-//        showStatus('Keyword added');
     } catch (error) {
-        console.error('Error adding keyword:', error);
-        showStatus('Error adding keyword', true);
+        console.error('Error adding keyword', error);
     }
 }
 
@@ -90,10 +91,8 @@ async function removeKeyword(keyword) {
         const keywords = result.keywords || [];
         const newKeywords = keywords.filter(k => k !== keyword);
         await updateKeywords(newKeywords);
-//        showStatus('Keyword removed');
     } catch (error) {
-        console.error('Error removing keyword:', error);
-        showStatus('Error removing keyword', true);
+        console.error('Error removing keyword', error);
     }
 }
 
@@ -105,16 +104,24 @@ async function initializePopup() {
         currentTab = tabs[0];
 
         // Get current settings
-        const results = await browser.storage.local.get(['keywords', 'disabledSites']);
+        const results = await browser.storage.local.get(['keywords', 'disabledSites', 'filterStyle']);
         const keywords = results.keywords || [];
         const disabledSites = results.disabledSites || [];
+        const filterStyle = results.filterStyle || 'hide';
 
         // Set initial state
         renderKeywords(keywords);
         enableFilter.checked = !disabledSites.includes(new URL(currentTab.url).hostname);
+        document.getElementById('filterStyle').value = filterStyle;
+
+        // Get and display version
+        const manifest = browser.runtime.getManifest();
+        const versionElement = document.getElementById('version');
+        if (versionElement) {
+            versionElement.textContent = `Version ${manifest.version}`;
+        }
     } catch (error) {
-        console.error('Error initializing popup:', error);
-        showStatus('Error loading settings', true);
+        console.error('Error initializing popup', error);
     }
 }
 
@@ -137,7 +144,23 @@ enableFilter.addEventListener('change', async () => {
         await browser.storage.local.set({ disabledSites: newDisabledSites });
     } catch (error) {
         console.error('Error toggling filter:', error);
-        showStatus('Error updating settings', true);
+    }
+});
+
+document.getElementById('filterStyle').addEventListener('change', async (e) => {
+    const newStyle = e.target.value;
+
+    try {
+        // Save the setting
+        await browser.storage.local.set({ filterStyle: newStyle });
+
+        // Send message to content script
+        await browser.tabs.sendMessage(currentTab.id, {
+            action: 'updateFilterStyle',
+            style: newStyle
+        });
+    } catch (error) {
+        console.error('Error updating filter style:', error);
     }
 });
 

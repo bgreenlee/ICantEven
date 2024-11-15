@@ -9,12 +9,25 @@
     <div class="container">
         <div class="header">
             <h1>I Can't Even</h1>
+            <p class="subtitle">Hide content containing keywords</p>
             <div class="toggle-container">
                 <label class="switch">
                     <input type="checkbox" id="enableFilter">
                     <span class="slider"></span>
                 </label>
                 <span class="toggle-label">Enable for this site</span>
+            </div>
+        </div>
+
+        <div class="style-section">
+            <div class="style-header">
+                <h2>Style</h2>
+                <div class="select-container">
+                    <select id="filterStyle" class="style-select">
+                        <option value="hide">Hide</option>
+                        <option value="redact">Redact</option>
+                    </select>
+                </div>
             </div>
         </div>
 
@@ -30,7 +43,7 @@
         </div>
 
         <div class="footer">
-            <span id="status"></span>
+            <span id="version" class="version-text"></span>
         </div>
     </div>
     <script src="popup.js"></script>

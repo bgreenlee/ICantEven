@@ -229,6 +229,7 @@
 				A2CE843F2CE4212B0034BFDE /* Sources */,
 				A2CE84402CE4212B0034BFDE /* Frameworks */,
 				A2CE84412CE4212B0034BFDE /* Resources */,
+				A20E31752CE6EB950044F329 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -323,6 +324,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A20E31752CE6EB950044F329 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "# Add this as a \"Run Script\" build phase in Xcode\nVERSION=$(xcrun agvtool what-version -terse)\nBUILD_NUMBER=$(xcrun agvtool what-version -terse1)\nMANIFEST_PATH=\"${SRCROOT}/YourExtension/Resources/manifest.json\"\n\n# Update version in manifest.json\nif [ -f \"$MANIFEST_PATH\" ]; then\n    # Create a temporary file\n    tmp=$(mktemp)\n    # Update version to include build number\n    jq \".version = \\\"$VERSION.$BUILD_NUMBER\\\"\" \"$MANIFEST_PATH\" > \"$tmp\"\n    mv \"$tmp\" \"$MANIFEST_PATH\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A2CE840D2CE4212A0034BFDE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -391,7 +413,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -422,7 +444,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -565,7 +587,8 @@
 				DEVELOPMENT_TEAM = UBXXTX5R7W;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = ICantEven;
+				INFOPLIST_KEY_CFBundleDisplayName = "I Can't Even";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.news";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -574,7 +597,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -600,7 +623,8 @@
 				DEVELOPMENT_TEAM = UBXXTX5R7W;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = ICantEven;
+				INFOPLIST_KEY_CFBundleDisplayName = "I Can't Even";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.news";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -609,7 +633,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
