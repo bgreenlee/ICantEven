@@ -9,36 +9,32 @@
     <div class="container">
         <div class="header">
             <h1>I Can't Even</h1>
-            <p class="subtitle">Hide content containing keywords</p>
-            <div class="toggle-container">
-                <label class="switch">
-                    <input type="checkbox" id="enableFilter">
-                    <span class="slider"></span>
-                </label>
-                <span class="toggle-label">Enable for this site</span>
-            </div>
+            <p class="subtitle">Hide content containing keywords.<br>For when you just can't even.</p>
         </div>
 
-        <div class="style-section">
-            <div class="style-header">
-                <h2>Style</h2>
-                <div class="select-container">
-                    <select id="filterStyle" class="style-select">
-                        <option value="hide">Hide</option>
-                        <option value="redact">Redact</option>
-                    </select>
-                </div>
+        <div class="form-field">
+            <label for="enableFilter">Enable for this site</label>
+            <input type="checkbox" id="enableFilter" switch>
+        </div>
+
+        <div class="form-field">
+            <label for="filterStyle">Style</label>
+            <div class="select-container">
+                <select id="filterStyle">
+                    <option value="hide">Hide</option>
+                    <option value="redact">Redact</option>
+                </select>
             </div>
         </div>
 
         <div class="keywords-section">
-            <h2>Filtered Keywords</h2>
+            <label>Filtered Keywords</label>
+            <div class="add-keyword">
+                <input type="text" id="newKeyword" placeholder="Add new keyword">
+                <button id="addKeyword">Add</button>
+            </div>
             <div class="keywords-container">
                 <div id="keywordsList"></div>
-                <div class="add-keyword">
-                    <input type="text" id="newKeyword" placeholder="Add new keyword">
-                    <button id="addKeyword">Add</button>
-                </div>
             </div>
         </div>
 

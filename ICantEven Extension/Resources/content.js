@@ -49,13 +49,12 @@ function applyFilter(element, shouldRestore = false) {
     }
 }
 
-// Function to find and hide elements that contain the filtered text
+// Find and hide elements that contain the filtered text
 function hideElementsWithText(searchText, rootNode = document.body) {
     if (currentFilterStyle === 'redact') {
         setupRedactionStyles();
     }
 
-    let hiddenCount = 0;
     searchText = searchText.toLowerCase();
 
     // Process links containing the searchText
@@ -65,7 +64,6 @@ function hideElementsWithText(searchText, rootNode = document.body) {
             if ((currentFilterStyle === 'hide' && link.style.visibility !== 'hidden') ||
                 (currentFilterStyle === 'redact' && !link.classList.contains('redacted'))) {
                 applyFilter(link);
-                hiddenCount++;
             }
         }
     }
@@ -78,7 +76,6 @@ function hideElementsWithText(searchText, rootNode = document.body) {
             if ((currentFilterStyle === 'hide' && img.style.visibility !== 'hidden') ||
                 (currentFilterStyle === 'redact' && !img.classList.contains('redacted'))) {
                 applyFilter(img);
-                hiddenCount++;
             }
         }
     }
@@ -123,10 +120,7 @@ function hideElementsWithText(searchText, rootNode = document.body) {
 
     nodesToFilter.forEach(element => {
         applyFilter(element);
-        hiddenCount++;
     });
-
-    return hiddenCount;
 }
 
 // Function to restore hidden elements
@@ -232,8 +226,9 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
             updateFilterStyle(message.style);
             break;
         case 'enable':
-            browser.storage.local.get('keywords').then(({ keywords = [] }) => {
-                updateFilterKeywords(keywords);
+            // updateFilterStyle also updates the keywords
+            browser.storage.local.get('filterStyle').then(({ filterStyle = 'hide' }) => {
+                updateFilterStyle(filterStyle);
             });
             break;
         case 'disable':

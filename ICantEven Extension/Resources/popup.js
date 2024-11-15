@@ -10,7 +10,9 @@ let currentTab = null;
 // Function to render keywords list
 function renderKeywords(keywords) {
     keywordsList.innerHTML = '';
-    keywords.forEach(keyword => {
+    // hide the keywords container if there's no keywords
+    keywordsList.parentElement.hidden = (keywords.length == 0);
+    keywords.reverse().forEach(keyword => {
         const item = document.createElement('div');
         item.className = 'keyword-item';
 
@@ -36,7 +38,7 @@ async function updateKeywords(keywords) {
         await browser.storage.local.set({ keywords });
 
         // Update on current tab if filter is enabled
-        if (currentTab && enableFilter.checked) {
+        if (enableFilter.checked) {
             await browser.tabs.sendMessage(currentTab.id, {
                 action: 'updateKeywords',
                 keywords: keywords
@@ -69,7 +71,7 @@ async function addKeyword(keyword) {
         await browser.storage.local.set({ keywords: newKeywords });
 
         // Update content script if filter is enabled
-        if (currentTab.id && enableFilter.checked) {
+        if (enableFilter.checked) {
             await browser.tabs.sendMessage(currentTab.id, {
                 action: 'updateKeywords',
                 keywords: newKeywords
@@ -154,11 +156,13 @@ document.getElementById('filterStyle').addEventListener('change', async (e) => {
         // Save the setting
         await browser.storage.local.set({ filterStyle: newStyle });
 
-        // Send message to content script
-        await browser.tabs.sendMessage(currentTab.id, {
-            action: 'updateFilterStyle',
-            style: newStyle
-        });
+        if (enableFilter.checked) {
+            // Send message to content script
+            await browser.tabs.sendMessage(currentTab.id, {
+                action: 'updateFilterStyle',
+                style: newStyle
+            });
+        }
     } catch (error) {
         console.error('Error updating filter style:', error);
     }
