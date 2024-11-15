@@ -111,8 +111,7 @@ label {
     padding-top: 0.8rem;
     text-align: center;
     display: flex;
-    flex-direction: column;
-    gap: 5px;
+    justify-content: space-between;
 }
 
 .version-text {
