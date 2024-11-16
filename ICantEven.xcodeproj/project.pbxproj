@@ -405,7 +405,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ICantEven Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "ICantEven Extension";
+				INFOPLIST_KEY_CFBundleDisplayName = "I Can't Even News Filter";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -436,7 +436,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ICantEven Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "ICantEven Extension";
+				INFOPLIST_KEY_CFBundleDisplayName = "I Can't Even News Filter";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -587,7 +587,7 @@
 				DEVELOPMENT_TEAM = UBXXTX5R7W;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "I Can't Even";
+				INFOPLIST_KEY_CFBundleDisplayName = "I Can't Even News Filter";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.news";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
@@ -623,7 +623,7 @@
 				DEVELOPMENT_TEAM = UBXXTX5R7W;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "I Can't Even";
+				INFOPLIST_KEY_CFBundleDisplayName = "I Can't Even News Filter";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.news";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
