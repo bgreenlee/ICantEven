@@ -1,10 +1,10 @@
 {
     "extension_name": {
-        "message": "ICantEven",
-        "description": "The display name for the extension."
+        "message": "I Can't Even",
+        "description": "Web content filter"
     },
     "extension_description": {
-        "message": "This is ICantEven. You should tell us what your extension does here.",
-        "description": "Description of what the extension does."
+        "message": "I Can't Even allows you to filter out web content containing certain keywords, for when you just can't even.",
+        "description": "Web content filter"
     }
 }
