@@ -1,44 +1,63 @@
+
+* {
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    cursor: default;
+}
+
 :root {
     color-scheme: light dark;
+
+    --spacing: 1rem;
+}
+
+html {
+    height: 100%;
 }
 
 body {
-    width: 300px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--spacing);
+    margin: 0 var(--spacing);
+    height: 100%;
+    min-width: 15rem;
+    font: -apple-system-short-body;
     background: #f5f5f5;
     color: #333;
 }
 
-.container {
-    padding: 1rem;
+button {
+    font-size: 1em;
 }
 
 .header {
+    text-align: center;
     margin-bottom: 1rem;
 }
 
 h1 {
-    font-size: 1.2rem;
-    margin: 0 0 1rem 0;
-}
-
-.subtitle {
-    font-size: 0.8rem;
+    font-size: 1rem;
 }
 
 label {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: bold;
     color: #666;
 }
+
 
 .form-field {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 0.5rem;
+}
+
+.form-field.enable {
+    margin-bottom: 1rem;
 }
 
 /* Keywords Section */
@@ -64,7 +83,7 @@ label {
 }
 
 .keyword-text {
-    font-size: 14px;
+/*     font-size: 1rem; */
     color: #333;
 }
 
@@ -74,7 +93,7 @@ label {
     color: #ff4444;
     cursor: pointer;
     padding: 4px;
-    font-size: 18px;
+    font-size: 1rem;
     line-height: 1;
 }
 
@@ -112,7 +131,7 @@ label {
 }
 
 .footer {
-    padding-top: 0.8rem;
+    padding: 1rem 0 0.5rem;
     text-align: center;
     display: flex;
     justify-content: space-between;
@@ -123,3 +142,69 @@ label {
     color: #999;
 }
 
+/* iOS tweaks */
+
+@supports (-webkit-touch-callout: none) {
+    body {
+        align-items: stretch;
+        justify-content: start;
+        margin-top: 1rem;
+    }
+
+    .container {
+        margin: 0 var(--spacing);
+    }
+
+    .header {
+        display: none;
+    }
+
+    label {
+        font-size: 1rem;
+    }
+
+    #filterStyle {
+        font-size: 1rem;
+    }
+
+    .remove-keyword {
+        font-size: 1.5rem;
+    }
+}
+
+/* Dark theme */
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #2c2e2f;
+        color: #eee;
+    }
+
+    label {
+        color: #ccc;
+    }
+
+    .keywords-container {
+        background: #444;
+    }
+
+    .keyword-text {
+        color: #eee;
+    }
+
+    .keyword-item {
+        border-bottom: 1px solid #333;
+    }
+
+    .remove-keyword {
+        color: #ff9999;
+    }
+
+    .version-text {
+        color: #ccc;
+    }
+
+    .footer img {
+        filter: invert(100%);
+    }
+}
