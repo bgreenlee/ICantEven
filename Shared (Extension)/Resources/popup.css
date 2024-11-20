@@ -145,30 +145,35 @@ label {
 /* iOS tweaks */
 
 @supports (-webkit-touch-callout: none) {
-    body {
-        align-items: stretch;
-        justify-content: start;
-        margin-top: 1rem;
-    }
-
+    /* iOS & iPadOS */
     .container {
-        margin: 0 var(--spacing);
+        padding: 0 var(--spacing);
     }
 
-    .header {
-        display: none;
-    }
+    /* iOS only */
+    @media (hover: none) and (pointer: coarse)
+        and (max-device-width: 812px) {
+        body {
+            align-items: stretch;
+            justify-content: start;
+            margin-top: 1rem;
+        }
 
-    label {
-        font-size: 1rem;
-    }
+        .header {
+            display: none;
+        }
 
-    #filterStyle {
-        font-size: 1rem;
-    }
+        label {
+            font-size: 1rem;
+        }
 
-    .remove-keyword {
-        font-size: 1.5rem;
+        #filterStyle {
+            font-size: 1rem;
+        }
+
+        .remove-keyword {
+            font-size: 1.5rem;
+        }
     }
 }
 
