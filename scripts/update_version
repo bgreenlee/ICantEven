@@ -1,7 +1,12 @@
 #!/bin/bash
 
-VERSION=$1
-# update all instances of "MARKETING_VERSION = ..." in project.pbxproj with VERSION
+# get version from most recent git tag
+VERSION=$(git describe --tags --abbrev=0)
+# get build number from total number of commits
+BUILD=$(git rev-list HEAD --count)
+
 sed -i '' "s/MARKETING_VERSION = .*;/MARKETING_VERSION = \"$VERSION\";/g" icanteven.xcodeproj/project.pbxproj
+sed -i '' "s/CURRENT_PROJECT_VERSION = .*;/CURRENT_PROJECT_VERSION = $BUILD;/g" icanteven.xcodeproj/project.pbxproj
+
 # update "version": "..." in manifest.json
-sed -i '' "s/\"version\": \".*\",/\"version\": \"$VERSION\",/g" "Shared (Extension)/Resources/manifest.json"
+sed -i '' "s/\"version\": \".*\",/\"version\": \"$VERSION.$BUILD\",/g" "Shared (Extension)/Resources/manifest.json"
