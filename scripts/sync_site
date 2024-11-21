@@ -1,0 +1,3 @@
+#!/bin/bash
+set -x
+rsync -Oavz --delete site/ $1:/var/www/icanteven.app/html/

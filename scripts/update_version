@@ -1,0 +1,7 @@
+#!/bin/bash
+
+VERSION=$1
+# update all instances of "MARKETING_VERSION = ..." in project.pbxproj with VERSION
+sed -i '' "s/MARKETING_VERSION = .*;/MARKETING_VERSION = \"$VERSION\";/g" icanteven.xcodeproj/project.pbxproj
+# update "version": "..." in manifest.json
+sed -i '' "s/\"version\": \".*\",/\"version\": \"$VERSION\",/g" "Shared (Extension)/Resources/manifest.json"
