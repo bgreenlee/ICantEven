@@ -171,7 +171,7 @@ function updateFilterStyle(newStyle) {
 }
 
 // Initialize MutationObserver to watch for DOM changes
-function initializeObserver(keywords) {
+function initializeMutationObserver(keywords) {
     const observer = new MutationObserver((mutations) => {
         mutations.forEach(mutation => {
             // Handle added nodes
@@ -216,6 +216,31 @@ function initializeObserver(keywords) {
     return observer;
 }
 
+// avoid multiple calls within a timeframe
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+function initializeResizeObserver(keywords) {
+    const resizeObserver = new ResizeObserver(debounce((entries) => {
+        keywords.forEach(keyword => {
+            hideElementsWithText(keyword);
+        });
+    }, 100));
+
+    resizeObserver.observe(document.body);
+
+    return resizeObserver;
+}
+
 // Listen for messages from popup
 browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
     switch (message.action) {
@@ -233,8 +258,10 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
             break;
         case 'disable':
             restoreHiddenElements();
-            if (window._contentFilter && window._contentFilter.observer) {
-                window._contentFilter.observer.disconnect();
+            if (window._contentFilter && window._contentFilter.observers) {
+                window._contentFilter.observers.forEach(observer => {
+                    observer.disconnect();
+                });
             }
             break;
 
@@ -267,9 +294,10 @@ browser.storage.local.get(['keywords', 'disabledSites', 'filterStyle']).then(({
     const hostname = window.location.hostname;
     if (!disabledSites.includes(hostname)) {
         updateFilterStyle(filterStyle);
-        const observer = initializeObserver(keywords);
+        const mutationObserver = initializeMutationObserver(keywords);
+        const resizeObserver = initializeResizeObserver(keywords);
         window._contentFilter = {
-            observer: observer,
+            observers: [mutationObserver, resizeObserver],
             restore: restoreHiddenElements
         };
     }
