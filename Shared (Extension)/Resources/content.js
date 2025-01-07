@@ -55,12 +55,12 @@ function hideElementsWithText(searchText, rootNode = document.body) {
         setupRedactionStyles();
     }
 
-    searchText = searchText.toLowerCase();
+    const searchRE = new RegExp(`\\b${searchText}\\b`, "i");
 
     // Process links containing the searchText
     const links = rootNode.getElementsByTagName('a');
     for (let link of links) {
-        if (link.href && link.href.toLowerCase().includes(searchText)) {
+        if (link.href && link.href.search(searchRE) != -1) {
             if ((currentFilterStyle === 'hide' && link.style.visibility !== 'hidden') ||
                 (currentFilterStyle === 'redact' && !link.classList.contains('redacted'))) {
                 applyFilter(link);
@@ -71,8 +71,8 @@ function hideElementsWithText(searchText, rootNode = document.body) {
     // Process images containing the searchText
     const images = rootNode.getElementsByTagName('img');
     for (let img of images) {
-        if ((img.src && img.src.toLowerCase().includes(searchText)) ||
-            (img.alt && img.alt.toLowerCase().includes(searchText))) {
+        if ((img.src && img.src.search(searchRE) != -1) ||
+            (img.alt && img.alt.search(searchRE) != -1)) {
             if ((currentFilterStyle === 'hide' && img.style.visibility !== 'hidden') ||
                 (currentFilterStyle === 'redact' && !img.classList.contains('redacted'))) {
                 applyFilter(img);
@@ -104,7 +104,7 @@ function hideElementsWithText(searchText, rootNode = document.body) {
     let node;
 
     while (node = walker.nextNode()) {
-        if (node.textContent.toLowerCase().includes(searchText)) {
+        if (node.textContent.search(searchRE) != -1) {
             let targetElement = node.parentElement;
             while (targetElement &&
                    window.getComputedStyle(targetElement).display === 'inline' &&
